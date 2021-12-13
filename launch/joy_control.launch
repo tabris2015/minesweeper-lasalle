@@ -10,4 +10,6 @@
     <param name="angular_scale" value="1" type="double"/>
 
     <node pkg="minesweeper" type="teleop_joy.py" name="minesweeper_teleop"/>
+    <node pkg="minesweeper" type="robot_control.py" name="robot_control"/>
+
 </launch>
