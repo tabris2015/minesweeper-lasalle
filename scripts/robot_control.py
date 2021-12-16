@@ -30,6 +30,7 @@ class RobotControlNode:
         self.twist_topic = rospy.get_param("twist_topic", "cmd_vel")
         self.joy_topic = rospy.get_param("joy_topic", "joy")
         self.pico_port = rospy.get_param("pico_port", "/dev/ttyACM0")
+        self.arm_axis = rospy.get_param("arm_axis", 4)
         self.up_button = rospy.get_param("up_button", 2)
         self.down_button = rospy.get_param("down_button", 0)
         self.left_button = rospy.get_param("left_button", 3)
@@ -46,7 +47,7 @@ class RobotControlNode:
         self.command = SerialCommand(linear=0, angular=0, base=0, elbow=0, magnet=False, alarm=False)
 
     def joy_callback(self, msg: Joy):
-        self.command.base = self.arm_vel * (msg.buttons[self.left_button] - msg.buttons[self.right_button])
+        self.command.base = msg.axes[self.arm_axis]
         self.command.elbow = self.arm_vel * (msg.buttons[self.up_button] - msg.buttons[self.down_button])
         self.command.magnet = bool(msg.buttons[self.magnet_button])
         self.command.alarm = bool(msg.buttons[self.alarm_button])
