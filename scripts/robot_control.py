@@ -36,7 +36,7 @@ class RobotControlNode:
         self.right_button = rospy.get_param("right_button", 1)
         self.magnet_button = rospy.get_param("magnet_button", 5)
         self.alarm_button = rospy.get_param("alarm_button", 4)
-        self.arm_vel = 0.2
+        self.arm_vel = 0.5
 
         self.twist_subscriber = rospy.Subscriber(self.twist_topic, Twist, self.twist_callback, queue_size=10)
         self.joy_subscriber = rospy.Subscriber(self.joy_topic, Joy, self.joy_callback, queue_size=10)

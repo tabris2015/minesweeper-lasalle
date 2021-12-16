@@ -10,6 +10,8 @@
     <param name="angular_scale" value="0.5" type="double"/>
 
     <node pkg="minesweeper" type="teleop_joy.py" name="minesweeper_teleop"/>
+
+    <param name="pico_port" value="/dev/ttyACM0" type="string"/>
     <node pkg="minesweeper" type="robot_control.py" name="robot_control"/>
 
 </launch>
